@@ -17,45 +17,9 @@
         <script type="text/javascript" src="https://cdn.datatables.net/fixedheader/2.1.1/js/dataTables.fixedHeader.min.js"></script>
         <script type="text/javascript" src="../static/javascripts/lz-string-1.3.3-min.js"></script>
         <script type="text/javascript" src="../static/javascripts/pouchdb-3.3.1.min.js"></script>
-        <script src="index.js"></script>
+        <script src="ikrpg.js"></script>
     </head>
-    <body>
-        <script type="text/javascript">
-            function changeBackground(imageName, topX) {
-                $("body").css('background-image', 'url('+imageName+')');
-                $("body").css('background-position', '50% '+topX+'px');
-                $("#head").css('background-image', 'url('+imageName+')');
-                $("#head").css('background-position', '50% '+(topX-66)+'px');
-                $("#foot > div.banner").css('background-image', 'url('+imageName+')');
-            }
-
-            function setBackground(imageName, topX) {
-                changeBackground(imageName, topX);
-
-                db.get("bg", function(error, bg) {
-                    if(!error) {
-                        bg.name = imageName;
-                        bg.topX = topX;
-                        db.put(bg);
-                    }
-                });
-            }
-
-            $(function() {
-                db.get("bg", function(error, bg) {
-                    if(error) {
-                        bg = {
-                            _id: "bg",
-                            name: "/static/images/bg-FMF.jpg",
-                            topX: -370
-                        };
-                        db.put(bg);
-                    }
-                    changeBackground(bg.name, bg.topX);
-                });
-            });
-        </script>
-        <article itemscope itemtype="http://schema.org/Article">
+    <body>        <article itemscope itemtype="http://schema.org/Article">
             <nav id="menu">
                 <ol>
                     <li><a href="/">&#xE081;</a></li>
